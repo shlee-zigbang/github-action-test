@@ -10,7 +10,16 @@ jobs:
   createPullRequest:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: echo a string
+        run: echo "Hello, world!"
+
+      - name: multiline script
+        run: |
+          git --version
+          python --version
 
       - name: Latest Release Branch Print
         run: |
