@@ -18,6 +18,7 @@ jobs:
 
       - name: multiline script
         run: |
+          git fetch
           git branch -a
 
       - name: Latest Release Branch Print
