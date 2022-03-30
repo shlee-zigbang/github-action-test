@@ -1,7 +1,6 @@
 name: Generate Draft PR
 
 on:
-  push:
   create:
     branches:
       - 'feature/**'
@@ -33,7 +32,7 @@ jobs:
 
       - name: Create Pull Request
         id: cpr
-        uses: peter-evans/create-pull-request@v4
+        uses: repo-sync/pull-request@v2
         with:
-          draft: true
-          base: ${{ steps.release.BRANCH }}
+          pr_draft: true
+          destination_branch: ${{ steps.release.BRANCH }}
