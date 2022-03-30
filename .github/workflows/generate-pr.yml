@@ -12,22 +12,10 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: echo a string
-        run: echo "Hello, world!"
-
-      - name: multiline script
-        run: |
-          git branch -r
-          git branch -a
-          git branch --list 'release/*'
-
-      - name: Latest Release Branch Print
-        run: |
-          git branch --list 'release/*' | sort -r | head -1
-
       - name: Latest Release Branch
         run: |
-          echo "::set-output name=BRANCH::$(git branch --list 'release/*' | sort -r | head -1)"
+          git fetch
+          echo "::set-output name=BRANCH::$(git branch -a | grep -E -o 'release/[0-9]*' | sort -r | head -1 | tr -d ' ')"
         id: release
 
       - name: Create Pull Request
@@ -36,4 +24,4 @@ jobs:
         with:
           pr_draft: true
           github_token: ${{ secrets.PR_TOKEN }}
-          destination_branch: ${{ steps.release.BRANCH }}
+          destination_branch: ${{ steps.release.outputs.BRANCH }}
