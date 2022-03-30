@@ -27,3 +27,4 @@ jobs:
           github_token: ${{ secrets.PR_TOKEN }}
           pr_title: "[${{ steps.Variables.outputs.ISSUE_NUMBER }}] Automated Draft PR"
           destination_branch: ${{ steps.Variables.outputs.RELEASE_BRANCH }}
+          pr_template: ".github/PULL_REQUEST_TEMPLATE.md"
