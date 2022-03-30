@@ -2,6 +2,8 @@ name: Generate Draft PR
 
 on:
   push:
+    branches:
+      - 'feature/**'
   create:
     branches:
       - 'feature/**'
@@ -32,6 +34,3 @@ jobs:
           pr_allow_empty: true
           pr_reviewer: "shlee-zigbang"
           pr_assignee: ${{ github.actor }}
-
-      - name: output-url
-        run: echo ${{steps.open-pr.outputs.pr_url}}
