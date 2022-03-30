@@ -14,11 +14,11 @@ jobs:
 
       - name: Latest Release Branch Print
         run: |
-          git branch --list "release/*" | sort -r | head -1
+          git branch --list 'release/*' | sort -r | head -1
 
       - name: Latest Release Branch
         run: |
-          echo "::set-output name=BRANCH::$(git branch --list "release/*" | sort -r | head -1)"
+          echo "::set-output name=BRANCH::$(git branch --list 'release/*' | sort -r | head -1)"
         id: release
 
       - name: Create Pull Request
