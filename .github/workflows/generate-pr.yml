@@ -33,7 +33,7 @@ jobs:
 
       - name: TEST Latest Release Branch
         run: |
-          echo ${{ steps.release.BRANCH }}
+          echo ${{ steps.release.outputs.BRANCH }}
 
       - name: Create Pull Request
         id: cpr
@@ -41,4 +41,4 @@ jobs:
         with:
           pr_draft: true
           github_token: ${{ secrets.PR_TOKEN }}
-          destination_branch: ${{ steps.release.BRANCH }}
+          destination_branch: ${{ steps.release.outputs.BRANCH }}
