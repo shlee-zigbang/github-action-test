@@ -3,25 +3,23 @@ name: Generate Draft PR
 on:
   push:
   create:
+    branches:
+      - 'feature/**'
 
 jobs:
   createPullRequest:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v3
+
       - name: Latest Release Branch
         run: |
           echo "::set-output name=BRANCH::$(git branch --list "release/*" | sort -r | head -1)')"
         id: release
-
-      - uses: actions/checkout@v3
-        with:
-          ref: ${git branch --list "release/*" | sort -r | head -1}
-
-      - name: Make changes to pull request
-        run: date +%s > report.txt
 
       - name: Create Pull Request
         id: cpr
         uses: peter-evans/create-pull-request@v4
         with:
           draft: true
+          base: ${{ release.BRANCH }}
