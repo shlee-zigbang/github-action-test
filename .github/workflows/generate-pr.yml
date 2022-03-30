@@ -25,5 +25,5 @@ jobs:
         with:
           pr_draft: true
           github_token: ${{ secrets.PR_TOKEN }}
-          pr_title: "[${{ steops.variable.outputs.ISSUE_NUMBER }}] Automated Draft PR"
+          pr_title: "[${{ steps.variable.outputs.ISSUE_NUMBER }}] Automated Draft PR"
           destination_branch: ${{ steps.variable.outputs.RELEASE_BRANCH }}
