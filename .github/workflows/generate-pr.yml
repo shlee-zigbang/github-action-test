@@ -1,6 +1,7 @@
 name: Generate Draft PR
 
 on:
+  push:
   create:
     branches:
       - 'feature/**'
