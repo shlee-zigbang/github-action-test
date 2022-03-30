@@ -8,7 +8,14 @@ jobs:
   createPullRequest:
     runs-on: ubuntu-latest
     steps:
+      - name: Latest Release Branch
+        run: |
+          echo "::set-output name=BRANCH::$(git branch --list "release/*" | sort -r | head -1)')"
+        id: release
+
       - uses: actions/checkout@v3
+        with:
+          ref: ${git branch --list "release/*" | sort -r | head -1}
 
       - name: Make changes to pull request
         run: date +%s > report.txt
@@ -17,5 +24,4 @@ jobs:
         id: cpr
         uses: peter-evans/create-pull-request@v4
         with:
-          branch: example-patches
           draft: true
