@@ -1,7 +1,6 @@
 name: Generate Draft PR
 
 on:
-  push:
   create:
     branches:
       - 'feature/**'
@@ -23,6 +22,6 @@ jobs:
         id: cpr
         uses: repo-sync/pull-request@v2
         with:
-          pr_draft: false
+          pr_draft: true
           github_token: ${{ secrets.PR_TOKEN }}
           destination_branch: ${{ steps.release.outputs.BRANCH }}
