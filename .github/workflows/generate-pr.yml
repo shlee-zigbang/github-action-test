@@ -12,11 +12,12 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Latest Release Branch
+      - name: Variable for PR
         run: |
           git fetch
-          echo "::set-output name=BRANCH::$(git branch -a | grep -E -o 'release/[0-9]*' | sort -r | head -1 | tr -d ' ')"
-        id: release
+          echo "::set-output name=RELEASE_BRANCH::$(git branch -a | grep -E -o 'release/[0-9]*' | sort -r | head -1 | tr -d ' ')"
+          echo "::set-output name=ISSUE_NUMBER::$(echo '${{ github.ref }})' | cut -d '/' -f 2-"
+        id: variable
 
       - name: Create Pull Request
         id: cpr
@@ -24,4 +25,5 @@ jobs:
         with:
           pr_draft: true
           github_token: ${{ secrets.PR_TOKEN }}
-          destination_branch: ${{ steps.release.outputs.BRANCH }}
+          pr_title: "[${{ steops.variable.outputs.ISSUE_NUMBER }}] Automated Draft PR"
+          destination_branch: ${{ steps.variable.outputs.RELEASE_BRANCH }}
