@@ -18,7 +18,7 @@ jobs:
 
       - name: multiline script
         run: |
-          git branch -r
+          git branch -a
 
       - name: Latest Release Branch Print
         run: |
