@@ -19,15 +19,15 @@ jobs:
       - name: multiline script
         run: |
           git fetch
-          git branch -a | grep -E 'release/' | sort -r | head -1
+          git branch -a | grep -E 'release/' | sort -r | head -1 | tr -d ' '
 
       - name: Latest Release Branch Print
         run: |
-          git branch -a | grep -E 'release/' | sort -r | head -1
+          git branch -a | grep -E 'release/' | sort -r | head -1 | tr -d ' '
 
       - name: Latest Release Branch
         run: |
-          echo "::set-output name=BRANCH::$(git branch -a | grep -E 'release/' | sort -r | head -1)"
+          echo "::set-output name=BRANCH::$(git branch -a | grep -E 'release/' | sort -r | head -1 | tr -d ' ')"
         id: release
 
 
