@@ -1,6 +1,7 @@
 name: Generate Draft PR
 
 on:
+  push:
   create:
     branches:
       - 'feature/**'
@@ -17,8 +18,6 @@ jobs:
 
       - name: multiline script
         run: |
-          git branch -r
-          git branch -a
           git branch --list 'release/*'
 
       - name: Latest Release Branch Print
