@@ -30,6 +30,11 @@ jobs:
           echo "::set-output name=BRANCH::$(git branch -a | grep -E 'release/' | sort -r | head -1)"
         id: release
 
+
+      - name: TEST Latest Release Branch
+        run: |
+          echo ${{ steps.release.BRANCH }}
+
       - name: Create Pull Request
         id: cpr
         uses: repo-sync/pull-request@v2
