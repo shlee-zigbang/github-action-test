@@ -18,8 +18,8 @@ jobs:
 
       - name: multiline script
         run: |
-          git --version
-          python --version
+          git branch -r
+          git branch --list 'release/*'
 
       - name: Latest Release Branch Print
         run: |
