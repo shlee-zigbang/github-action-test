@@ -16,7 +16,7 @@ jobs:
         run: |
           git fetch
           echo "::set-output name=RELEASE_BRANCH::$(git branch -a | grep -E -o 'release/[0-9]*' | sort -r | head -1 | tr -d ' ')"
-          echo "::set-output name=ISSUE_NUMBER::$(echo '${{ github.ref }})' | cut -d '/' -f 2-"
+          echo "::set-output name=ISSUE_NUMBER::$(echo '${{ github.ref }})' | cut -d '/' -f 2-)"
         id: variable
 
       - name: Create Pull Request
