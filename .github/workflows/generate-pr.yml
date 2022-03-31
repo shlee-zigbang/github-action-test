@@ -4,6 +4,7 @@ on:
   create:
     branches:
       - 'feature/**'
+      - 'fix/**'
 
 jobs:
   createPullRequest:
