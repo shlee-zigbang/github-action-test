@@ -1,7 +1,7 @@
 name: Generate Draft PR
 
 on:
-  created:
+  create:
     branches:
       - 'feature/**'
       - 'fix/**'
