@@ -1,7 +1,10 @@
 name: Generate Draft PR
 
 on:
-  create:
+  label:
+    types:
+      - created
+  push:
     branches:
       - 'feature/**'
       - 'fix/**'
